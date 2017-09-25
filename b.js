@@ -10,10 +10,10 @@ var {CardHandlerApi, CardHandler, ListHandler} = require('../../../actions/Proje
 function addTableRow(){
     //好像被修改了
     console.log(1);
-    console.log(1);
-    console.log(1);
-    console.log(1);
-    console.log(1);
+    console.log(2);
+    console.log(2);
+    console.log(2);
+    console.log(2);
     var table = this
     table.api.addRow({
         isEdit:true
