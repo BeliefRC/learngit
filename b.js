@@ -10,6 +10,7 @@ var urls = require('../../../actions/RestUrl').person;
 var {CardHandlerApi, CardHandler, ListHandler} = require('../../../actions/ProjectHandler');
 
 function addTableRow(){
+    console.log(1);
     var table = this
     table.api.addRow({
         isEdit:true
