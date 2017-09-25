@@ -21,8 +21,6 @@ function addTableRow(){
 }
 
 function hideDetails(visible){
-    console.log(1);console.log(1);console.log(1);
-    console.log(1);console.log(1);console.log(1);
     this.setState({isLeader:visible})
     this.findUI('rewardCard').isShow = visible
     this.findUI('workhistoryCard').isShow = visible
