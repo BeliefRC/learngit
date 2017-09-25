@@ -236,52 +236,52 @@ var EventHandler = {
     },
     exportBtn: {
         onClick: () => {
-        fetch(urls.exportDetail + '?userId='+AuthToken.getUserId(),{
-    method: 'GET',
-        headers: {
-        'Content-Type': 'application/json',
-            'authority': AuthToken.getAuthenticationStr(),
-            'icop-token': AuthToken.getToken()
-    }
-}).then((response) => response.blob()).then((blob) => {
-    const objectUrl = URL.createObjectURL(blob);
-const a = document.createElement('a');
-document.body.appendChild(a);
-a.setAttribute('style', 'display:none');
-a.setAttribute('href', objectUrl);
-a.setAttribute('download', "个人基本信息表");
-a.click();
-URL.revokeObjectURL(objectUrl);
-})
-}
-},
-workHistories:{
-    "onCellChange": function (options) {
-        var {rowData, rowIndex, dataIndex, newVal}=options;
-        if(dataIndex == 'beginDate'){
-            this.findUI('endDate').disabledDate = function (options,value) {
-                console.log(options);
-                if (!newVal) {
-                    return false;
+            fetch(urls.exportDetail + '?userId='+AuthToken.getUserId(),{
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authority': AuthToken.getAuthenticationStr(),
+                    'icop-token': AuthToken.getToken()
                 }
-                if (options.rowData.beginDate) {
-                    return value.getTime() <= new Date(options.rowData.beginDate).getTime();
-                }
-            }
-        } else if (dataIndex == 'endDate') {
-            this.findUI('beginDate').disabledDate = function (options,value) {
-                if (!newVal) {
-                    return false;
-                }
-                if (options.rowData.endDate) {
-                    return value.getTime() > new Date(options.rowData.endDate).getTime();
-                }
-            }
+            }).then((response) => response.blob()).then((blob) => {
+                const objectUrl = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                document.body.appendChild(a);
+                a.setAttribute('style', 'display:none');
+                a.setAttribute('href', objectUrl);
+                a.setAttribute('download', "个人基本信息表");
+                a.click();
+                URL.revokeObjectURL(objectUrl);
+            })
         }
-        this.findUI('workHistories').dataSource = this.findUI('workHistories').api.getDataSource()
-        this.refresh()
+    },
+    workHistories:{
+        "onCellChange": function (options) {
+            var {rowData, rowIndex, dataIndex, newVal}=options;
+            if(dataIndex == 'beginDate'){
+                this.findUI('endDate').disabledDate = function (options,value) {
+                    console.log(options);
+                    if (!newVal) {
+                        return false;
+                    }
+                    if (options.rowData.beginDate) {
+                        return value.getTime() <= new Date(options.rowData.beginDate).getTime();
+                    }
+                }
+            } else if (dataIndex == 'endDate') {
+                this.findUI('beginDate').disabledDate = function (options,value) {
+                    if (!newVal) {
+                        return false;
+                    }
+                    if (options.rowData.endDate) {
+                        return value.getTime() > new Date(options.rowData.endDate).getTime();
+                    }
+                }
+            }
+            this.findUI('workHistories').dataSource = this.findUI('workHistories').api.getDataSource()
+            this.refresh()
+        }
     }
-}
 }
 
 var PersonForm = YYClass.create({
