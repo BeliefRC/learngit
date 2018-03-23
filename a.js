@@ -4,12 +4,10 @@
  */
 var React = require('react');
 var _ = require('lodash');
-var {CardEventHandler} = require('yylib-cscec');
 var AuthToken = require('yylib-utils/AuthToken');
-var {YYMessage, YYModal} = require('yylib-ui');
 /*****公共的静态类方法******/
 var CardHandlerApi = {};
-//页面遮罩层
+//页面遮罩
 CardHandlerApi.pageLoading = function(page){
     CardEventHandler.pageLoading(page);
 };
