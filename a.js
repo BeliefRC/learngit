@@ -5,6 +5,7 @@
 var React = require('react');
 var _ = require('lodash');
 var AuthToken = require('yylib-utils/AuthToken');
+
 /*****公共的静态类方法******/
 var CardHandlerApi = {};
 //页面遮罩
