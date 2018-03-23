@@ -6,6 +6,7 @@ var React = require('react');
 var _ = require('lodash');
 var AuthToken = require('yylib-utils/AuthToken');
 
+
 /*****公共的静态类方法******/
 var CardHandlerApi = {};
 //页面遮罩
@@ -23,14 +24,12 @@ CardHandlerApi.setData = function (page, data) {
 CardHandlerApi.init = function(page,urls,options){
     // 给页面上的orgId加上筛选条件
     var orgId = page.findUI('orgId')
-    orgId.condition = {companyId:AuthToken.getOrgaId(), orgFunName:'discipline'}
-    // orgId在编辑页面 不允许修改
-    var query = page.getRouteQuery();
-    if(query && query.id){
+    orgId.condition = {companyId: AuthToken.getOrgaId(), orgFunName: 'discipline'}
+    // orgId在编辑页面 不允许修改var query = page.getRouteQuery();if(query && query.id){
         // 示范点创建时不需要
         if(query && query.type == 'create'){
             orgId.disabled = false
-        }else{
+        } else {
             orgId.disabled = true
         }
 
